@@ -1,10 +1,6 @@
-public class Goblin {
-    int health;
-    int strength;
-
+public class Goblin extends Entity {
     public Goblin(int health, int strength) {
-        this.health = health;
-        this.strength = strength;
+        super("Goblin", health, strength);
     }
 
     public int attack() {
@@ -17,4 +13,7 @@ public class Goblin {
             health = 0;
         }
     }
+
+    // Дополнительные методы и поля для класса Goblin
 }
+
