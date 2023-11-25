@@ -1,24 +1,19 @@
 import java.util.Random;
 
-public class Hero {
-    String name;
+public class Hero extends Entity {
     int agility;
-    int health;
     int experience;
     int gold;
-    int strength;
 
     public Hero(String name, int agility, int health, int experience, int gold, int strength) {
-        this.name = name;
+        super(name, health, strength);
         this.agility = agility;
-        this.health = health;
         this.experience = experience;
         this.gold = gold;
-        this.strength = strength;
     }
 
     public int attack() {
-        if (Math.random() < 0.1) {  // 10% chance of a critical hit
+        if (new Random().nextDouble() < 0.1) {  // 10% chance of a critical hit
             return strength * 2;
         }
         return strength;
