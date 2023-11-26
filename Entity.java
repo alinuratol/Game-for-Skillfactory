@@ -21,5 +21,6 @@ public class Entity {
     }
 
     public void endBattle(Entity winner) {
+        // Общая логика завершения битвы для всех существ
     }
 }
