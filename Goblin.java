@@ -13,7 +13,5 @@ public class Goblin extends Entity {
             health = 0;
         }
     }
-
-    // Дополнительные методы и поля для класса Goblin
 }
 
