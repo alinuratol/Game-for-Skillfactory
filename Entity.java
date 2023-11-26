@@ -1,4 +1,4 @@
-public class Entity {
+public abstract class Entity {
     String name;
     int health;
     int strength;
