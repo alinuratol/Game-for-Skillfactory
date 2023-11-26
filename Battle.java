@@ -30,8 +30,6 @@ public class Battle implements Runnable {
             System.out.println("Attack missed!");
         }
     }
-
-
     public boolean calculateHit(int agility) {
         return agility * 3 > new Random().nextInt(100);
     }
