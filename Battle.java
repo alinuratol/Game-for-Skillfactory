@@ -2,41 +2,35 @@ import java.util.Random;
 
 public class Battle implements Runnable {
     Hero hero;
-    Object enemy;
+    Entity enemy;
     boolean isBattleOver = false;
 
-    public Battle(Hero hero, Object enemy) {
+    public Battle(Hero hero, Entity enemy) {
         this.hero = hero;
         this.enemy = enemy;
     }
 
-    public void attackTurn(Object attacker, Object target) {
+    public void attackTurn(Entity attacker, Entity target) {
         if (attacker == hero) {
             System.out.println(hero.name + " attacks " + target.getClass().getSimpleName() + "!");
         } else {
             System.out.println(target.getClass().getSimpleName() + " attacks " + hero.name + "!");
         }
 
-        if (calculateHit(((Hero) attacker).agility)) {
-            int damage = ((Hero) attacker).attack();
-            if (target instanceof Goblin) {
-                ((Goblin) target).takeDamage(damage);
-            } else if (target instanceof Skeleton) {
-                ((Skeleton) target).takeDamage(damage);
-                ((Skeleton) target).performSpecialMove(hero);
-            }
+        if (calculateHit(attacker.attack())) {
+            int damage = attacker.attack();
+            target.takeDamage(damage);
 
             System.out.println(target.getClass().getSimpleName() + " takes " + damage + " damage.");
 
-            if (target instanceof Goblin && ((Goblin) target).health == 0) {
-                endBattle(attacker);
-            } else if (target instanceof Skeleton && ((Skeleton) target).health == 0) {
+            if (target.health == 0) {
                 endBattle(attacker);
             }
         } else {
             System.out.println("Attack missed!");
         }
     }
+
 
     public boolean calculateHit(int agility) {
         return agility * 3 > new Random().nextInt(100);
