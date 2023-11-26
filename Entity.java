@@ -19,5 +19,5 @@ public class Entity {
             health = 0;
         }
     }
-    public abstract void endBattle(Object winner);
+    public abstract void endBattle(Entity winner);
 }
