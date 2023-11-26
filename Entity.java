@@ -1,4 +1,4 @@
-public abstract class Entity {
+public class Entity {
     String name;
     int health;
     int strength;
@@ -19,5 +19,7 @@ public abstract class Entity {
             health = 0;
         }
     }
-    public abstract void endBattle(Entity winner);
+
+    public void endBattle(Entity winner) {
+    }
 }
