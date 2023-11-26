@@ -11,17 +11,13 @@ public class Battle implements Runnable {
     }
 
     public void attackTurn(Entity attacker, Entity target) {
-        if (attacker == hero) {
-            System.out.println(hero.name + " attacks " + target.getClass().getSimpleName() + "!");
-        } else {
-            System.out.println(target.getClass().getSimpleName() + " attacks " + hero.name + "!");
-        }
+        System.out.println(attacker.name + " attacks " + target.name + "!");
 
         if (calculateHit(attacker.attack())) {
             int damage = attacker.attack();
             target.takeDamage(damage);
 
-            System.out.println(target.getClass().getSimpleName() + " takes " + damage + " damage.");
+            System.out.println(target.name + " takes " + damage + " damage.");
 
             if (target.health == 0) {
                 endBattle(attacker);
@@ -30,6 +26,7 @@ public class Battle implements Runnable {
             System.out.println("Attack missed!");
         }
     }
+
     public boolean calculateHit(int agility) {
         return agility * 3 > new Random().nextInt(100);
     }
